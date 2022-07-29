@@ -1,0 +1,40 @@
+{% extends "index.html"%}
+
+{% block content %}
+<div class="mt-5">
+
+    <h3>Student Management</h3><hr>
+    <button><a href="/courses/add">Add New Courses</a></button>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Course Id</th>
+            <th scope="col">Course Title</th>
+            <th scope="col">Credits</th>
+            <th scope="col">Department Name</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for c in courses.keys() %}
+            <tr>
+                <th scope="row"> {{ courses[c]["course_id"] }}</th>
+                <td><a href="/courses/{{ courses[c]['course_id'] }}">{{ courses[c]["course_title"] }} </a> </td>
+                <td>{{ courses[c]['course_credits'] }}</td>
+                <td><a href="/departments/{{ courses[c]['dept_id'] }}">{{ department_names[courses[c]["dept_id"]] }}</a></td>
+                <td><a href="/courses/{{ courses[c]['course_id'] }}/edit"><button>Edit</button></a></td>
+                <td>
+                    <form action="/courses/{{ courses[c]['course_id'] }}/delete" method="post"> 
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock content %}

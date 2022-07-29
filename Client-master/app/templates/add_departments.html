@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h3>Add Departments</h3>
+    <hr>
+	<form action="/departments/add" method="POST">
+		{{ form.csrf_token }}
+		<p>
+			{{form.name.label}}<br>
+			{{form.name(size=32)}}
+		</p>
+		<p>
+			{{form.budget.label}}<br>
+			{{form.budget(size=32)}}
+		</p>
+		<button type="submit">Submit</button>
+	</form>
+
+</div>
+
+
+{% endblock content %}

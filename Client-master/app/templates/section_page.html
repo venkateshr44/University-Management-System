@@ -1,0 +1,65 @@
+{% extends "index.html"%}
+
+{% block content %}
+<div class="mt-5">
+
+    <h3>Section Details</h3><hr>
+    <h5>Section id: {{section['section_id']}}</h5>
+    <h5>Semester : {{section['semester']}}</h5>
+    <h5>Year: {{ section['year'] }} </h5>
+
+    <div class="row my-5">
+        <div class="col-lg-6">
+            <h5>Instructors</h5>
+            <button><a href="/sections/{{ section['section_id'] }}/add/instructors">Add Instructors</a></button>
+            <table class="table my-5">
+                <thead>
+                <tr>
+                    <th scope="col">Instructor Id</th>
+                    <th scope="col">Instructor Name</th>
+                    <th scope="col">Remove</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for s in section['instructors'].keys() %}
+                    <tr>
+                        <th scope="row"><a href="/instructors/{{ section['instructors'][s]['instructor_id'] }}">{{ section['instructors'][s]['instructor_id'] }} </a></th>
+                        <td>{{ section['instructors'][s]['instructor_name'] }}</a></td>
+                        <td><form action="/sections/{{ section['section_id'] }}/delete/instructor/{{ section['instructors'][s]['instructor_id'] }}" method="POST"> 
+                            <button type="submit">Remove</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-6">
+            <h5>Courses</h5>
+            <button><a href="/sections/{{ section['section_id'] }}/add/courses">Add Courses</a></button>
+            <table class="table my-5">
+                <thead>
+                <tr>
+                    <th scope="col">Course Id</th>
+                    <th scope="col">Course Name</th>
+                    <th scope="col">Remove</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for s in courses.keys() %}
+                    <tr>
+                        <th scope="row"><a href="/courses/{{ courses[s]['course_id'] }}">{{ courses[s]['course_id'] }} </a></th>
+                        <td>{{ courses[s]['course_title'] }}</a></td>
+                        <td><form action="/sections/{{ section['section_id'] }}/delete/course/{{ courses[s]['course_id'] }}" method="POST"> 
+                            <button type="submit">Remove</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+

@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="my-5">
+    <h3>Add Courses to Sections</h3><hr>
+
+	<form action="/sections/{{ section['section_id']}}/add/courses" method="POST">
+		{{ form.csrf_token }}
+		<p>
+			{{form.sec_id.label}}<br>
+			{{form.sec_id(size=32)}}
+		</p>
+		<p>
+			{{form.course_id.label}}<br>
+			{{form.course_id}}
+		</p>
+		<button type="submit">Submit</button>
+	</form>
+</div>
+
+
+{% endblock content %}

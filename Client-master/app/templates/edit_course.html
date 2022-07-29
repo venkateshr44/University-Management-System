@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+
+
+
+<div class="my-5">
+    <h3>Edit Course</h3><hr>
+    <form action="/courses/{{course.course_id}}/delete" method="delete">
+        <button type="submit">Delete</button>
+    </form>
+    <br>
+    
+	<form action="/courses/{{course.course_id}}/edit" method="POST">
+		{{ form.csrf_token }}
+		<p>
+			{{form.title.label}}<br>
+			{{form.title(size=32)}}
+		</p>
+		<p>
+			{{form.credits.label}}<br>
+			{{form.credits(size=32)}}
+		</p>
+		<p>
+			{{form.dept_id.label}}<br>
+			{{form.dept_id}}
+		</p>
+		<button type="submit">Submit</button>
+	</form>
+</div>
+
+{% endblock content %}

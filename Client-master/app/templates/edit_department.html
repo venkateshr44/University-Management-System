@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<h1>Edit Department</h1>
+<form action="/departments/{{department.dept_id}}/delete" method="delete">
+    <button type="submit">Delete</button>
+</form>
+
+
+<div class="container">
+	<h1>{{ department.name}}</h1>
+	<form action="/departments/{{department.dept_id}}/edit" method="POST">
+		{{ form.csrf_token }}
+		<p>
+			{{form.name.label}}<br>
+			{{form.name(size=32)}}
+		</p>
+		<p>
+			{{form.budget.label}}<br>
+			{{form.budget(size=32)}}
+		</p>
+		<button type="submit">Submit</button>
+	</form>
+
+</div>
+
+
+{% endblock content %}

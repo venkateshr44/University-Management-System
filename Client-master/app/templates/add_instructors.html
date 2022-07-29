@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="my-5">
+	<h3>Add Instructors</h3>
+	<hr>
+	<form action="/instructors/add" method="POST">
+		{{ form.csrf_token }}
+		<p>
+			{{form.name.label}}<br>
+			{{form.name(size=32)}}
+		</p>
+		<p>
+			{{form.salary.label}}<br>
+			{{form.salary(size=32)}}
+		</p>
+        <p>
+			{{form.dept_id.label}}<br>
+			{{form.dept_id }}
+		</p>
+		<button type="submit">Submit</button>
+	</form>
+
+</div>
+
+
+{% endblock content %}

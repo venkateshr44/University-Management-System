@@ -1,0 +1,43 @@
+{% extends "index.html"%}
+
+{% block content %}
+
+<div class="mt-5">
+
+    <h3>Student Management</h3><hr>
+    <button><a href="/students/add">Add New Students</a></button>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Student Id</th>
+            <th scope="col">Student Name</th>
+            <th scope="col">Credits</th>
+            <th scope="col">Department Name</th>
+            <th scope="col">Sec_id</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for s in students.keys() %}
+            <tr>
+                <th scope="row"> {{ students[s]['student_id'] }}</th>
+                <td><a href="/students/{{students[s].student_id}}">{{students[s]['student_name']}}</a></td>
+                <td>{{ students[s]["credits"] }}</td>
+                <td><a href="/departments/{{students[s].dept_id}}">{{ department_names[students[s]["dept_id"]] }}</a></td>
+                <td>{{ students[s]["sec_id"] }}</td>
+                <td><a href="/students/{{students[s].student_id}}/edit"><button>Edit</button></a></td>
+                <td>
+                    <form action="/students/{{ students[s]['student_id'] }}/delete" method="post"> 
+                    <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}
+

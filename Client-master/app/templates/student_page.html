@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+
+
+{% block content %}
+<h2>Student</h2>
+<h3>
+    {{ student['student_name'] }}
+</h3>
+{{ department_names[student['dept_id']] }}
+
+{{ semesters[student['sec_id']] }}
+{{ years[student['sec_id']] }}
+
+{% endblock content %}

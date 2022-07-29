@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+
+{% block home %}
+
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+     <ul class="flashes">
+        {% for message in messages %}
+         <div class="message_flash">{{ message }}</div>
+        {% endfor %}
+    </ul>
+  {% endif %}
+ {% endwith %}
+
+<div class="container align-items-center my-5">
+    <div class="col-12">
+        <div class="row">
+            <div class="card p-3 col-4 sm:col-12" style="width: 18rem;">
+                <h1><a href="/students" id="students"> Student Management</a></h1>
+            </div>
+
+            <div class="card p-3 sv-container col-4 " style="width: 18rem;">
+                <h1><a href="/departments">Department Management</a></h1>
+            </div>
+        .
+            <div class="card p-3 sv-container col-4" style="width: 18rem;">
+                <h1><a href="/instructors">Instructor Management</a></h1>
+            </div>
+        </div>
+        <div class="row align-items-center mr-5 dummy-container">
+            <div class="card col-6" style="width: 18rem;">
+                <h1><a href="/sections">Section Management</a></h1>
+            </div>
+
+            <div class="card p-3 sv-container col-6" style="width: 18rem;">
+                <h1><a href="/courses">Course Management</a></h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const id = document.getElementById('student')
+    const home_page = document.getElementsByClassName('home-page')[0]
+
+    id.addEventListener(onclick, document.getElementsByClassName('home-page')[0].style.backgroundImage="url(../purple-polygon.png)")
+</script>
+{% endblock home %}
