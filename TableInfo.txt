@@ -1,0 +1,83 @@
+
+MariaDB [(none)]> create db;
+
+MariaDB [db]> desc course;
++----------------+-------------+------+-----+---------+----------------+
+| Field          | Type        | Null | Key | Default | Extra          |
++----------------+-------------+------+-----+---------+----------------+
+| course_id      | int(11)     | NO   | PRI | NULL    | auto_increment |
+| course_title   | varchar(64) | YES  |     | NULL    |                |
+| course_credits | int(11)     | YES  |     | NULL    |                |
+| dept_id        | int(11)     | YES  | MUL | NULL    |                |
++----------------+-------------+------+-----+---------+----------------+
+4 rows in set (2.911 sec)
+
+MariaDB [db]> desc department;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| dept_id     | int(11)     | NO   | PRI | NULL    | auto_increment |
+| dept_budget | int(11)     | YES  |     | NULL    |                |
+| building    | varchar(64) | YES  |     | NULL    |                |
+| name        | varchar(64) | NO   |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.011 sec)
+
+MariaDB [db]> desc sec_course;
++---------------+---------+------+-----+---------+----------------+
+| Field         | Type    | Null | Key | Default | Extra          |
++---------------+---------+------+-----+---------+----------------+
+| sec_course_id | int(11) | NO   | PRI | NULL    | auto_increment |
+| sec_id        | int(11) | YES  | MUL | NULL    |                |
+| course_id     | int(11) | YES  | MUL | NULL    |                |
++---------------+---------+------+-----+---------+----------------+
+3 rows in set (0.013 sec)
+
+MariaDB [db]> desc section;
++------------+---------+------+-----+---------+----------------+
+| Field      | Type    | Null | Key | Default | Extra          |
++------------+---------+------+-----+---------+----------------+
+| section_id | int(11) | NO   | PRI | NULL    | auto_increment |
+| semester   | int(11) | YES  |     | NULL    |                |
+| year       | int(11) | YES  |     | NULL    |                |
++------------+---------+------+-----+---------+----------------+
+3 rows in set (0.122 sec)
+
+MariaDB [db]> desc student;
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| student_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| student_name | varchar(64) | NO   |     | NULL    |                |
+| credits      | int(11)     | NO   |     | NULL    |                |
+| dept_id      | int(11)     | YES  | MUL | NULL    |                |
+| sec_id       | int(11)     | YES  | MUL | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.011 sec)
+
+MariaDB [db]> desc teachers;
++---------------+---------+------+-----+---------+-------+
+| Field         | Type    | Null | Key | Default | Extra |
++---------------+---------+------+-----+---------+-------+
+| instructor_id | int(11) | NO   | PRI | NULL    |       |
+| section_id    | int(11) | NO   | PRI | NULL    |       |
++---------------+---------+------+-----+---------+-------+
+2 rows in set (0.013 sec)
+
+MariaDB [db]> desc teaches;
++---------------+---------+------+-----+---------+----------------+
+| Field         | Type    | Null | Key | Default | Extra          |
++---------------+---------+------+-----+---------+----------------+
+| teaches_id    | int(11) | NO   | PRI | NULL    | auto_increment |
+| sec_id        | int(11) | YES  | MUL | NULL    |                |
+| instructor_id | int(11) | YES  | MUL | NULL    |                |
++---------------+---------+------+-----+---------+----------------+
+3 rows in set (1.506 sec)
+
+MariaDB [db]> desc alembic_version;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| version_num | varchar(32) | NO   | PRI | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+1 row in set (0.225 sec)
