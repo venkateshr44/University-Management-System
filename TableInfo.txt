@@ -23,6 +23,17 @@ MariaDB [db]> desc department;
 +-------------+-------------+------+-----+---------+----------------+
 4 rows in set (0.011 sec)
 
+MariaDB [db]> desc instructor;
++-----------------+-------------+------+-----+---------+----------------+
+| Field           | Type        | Null | Key | Default | Extra          |
++-----------------+-------------+------+-----+---------+----------------+
+| instructor_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| instructor_name | varchar(64) | NO   |     | NULL    |                |
+| salary          | int(11)     | YES  |     | NULL    |                |
+| dept_id         | int(11)     | YES  | MUL | NULL    |                |
++-----------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.012 sec)
+
 MariaDB [db]> desc sec_course;
 +---------------+---------+------+-----+---------+----------------+
 | Field         | Type    | Null | Key | Default | Extra          |
